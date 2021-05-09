@@ -1,0 +1,558 @@
+* {
+  margin: 0;
+  padding: 0; 
+  overflow-x: hidden;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  letter-spacing: 1px;
+}
+body{
+  min-width: 335px;
+}
+header{
+  min-width: 335px;
+}
+/*//// APP PAGE /////*/
+.App {
+  background-color: #95cfc6;
+  min-height: 100%;
+  height: 100%;
+  padding-top: 8em;
+}
+
+/*//// NAV PAGE /////*/
+.navbar {
+  position:fixed;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 2em 1.5em;
+  height: 4em;
+  list-style: none;
+  z-index: 70;
+  background-color: #95cfc6;
+}
+.navlink {
+  text-decoration: none;
+  color: rgb(245, 245, 239);
+  margin-top: 1em;
+}
+.menu-icon {
+  display: none;
+}
+.side-drawer{
+  display: none;
+}
+.logo {
+  height: 60px;
+  border-radius: 50%;
+  padding-bottom:10px;
+}
+/*//// HOME PAGE /////*/
+/*.head-img {
+  background-color: #95cfc6;
+  margin-bottom: 2em;
+  margin-left: 2em;
+  margin-right: 2em;
+  display: flex;
+  align-items: center;
+  justify-content:space-around;
+}
+.head-img img {
+  width: 200px;
+  height: 200px;
+  margin-right: 1em;
+  margin-left: 1em;
+  object-fit: cover;
+  border-radius: 15%;
+  background-color: transparent;
+  background-size: inherit;
+}*/
+
+/*//// PRODUCTS/ADMIN PAGE /////*/
+.products {
+  height: 100%;
+  width: inherit;
+  background-color:rgb(238, 236, 236);
+  padding: 1em 4em 1em 4em;
+  color:  rgb(77, 74, 74);
+}
+.prod-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 250px;
+  margin-top: 1.5em;
+}
+.box {
+  position: relative;
+  height: 250px;
+  width: 250px;
+  background-color: transparent;
+  background-size: inherit;
+}
+.btn {
+  position: absolute;
+  top: 19%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  border-radius: 50%;
+  width: 15%;
+  border: 1px solid white;
+}
+.box .btn:hover {
+  background-color: #8ea0a3
+}
+.prod-box {
+  width: 100%;
+  margin-top: 1em;
+  margin-left: 1em;
+  margin-right: 2em;
+  display: grid;
+  grid-auto-flow: dense;
+  grid-template:  "1fr 1fr 1fr 1fr" 33.33vh;
+  grid-template-rows: auto auto auto; 
+  grid-gap: 1em 1em;  
+ }
+.prod-img {
+  width: 250px;
+  height: 250px;
+  margin-top: 1em;
+  object-fit: cover;
+  }
+
+/*//// PRODUCTS PAGE /////*/
+.products h1 {
+  margin-left: 1em;
+}
+
+/*//// ADMIN PAGE /////*/
+.products h2 {
+  margin-left: 1em;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+.prod-admin {
+  max-width: 620px;
+  display: grid;
+  grid-template:  "1fr 1fr" 33.33vh;
+  grid-template-rows: auto auto; 
+  grid-gap: 0em 1em; 
+}
+.prod-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.prod-btns button {
+  padding: 12px;
+  color:  rgb(77, 74, 74);
+  border-radius: 10%;
+  background-color: #f7f9fa;
+  border: 1px solid grey;
+ }
+
+.prod-btns button:hover {
+  background-color: #8ea0a3
+}
+.find-btn {
+  padding: 7px;
+  color:  rgb(77, 74, 74);
+  border-radius: 5%;
+  background-color: #f7f9fa;
+  border: 1px solid grey;
+  margin-right: 1em;
+  margin-top: 1.5em;
+}
+.add-product {
+  margin-left: 1em;
+  margin-bottom: 4em;
+  display: grid;
+  grid-template:"1fr 1fr" 33.33vh;
+  grid-template-rows: auto auto; 
+  grid-gap: 0em 1em;  
+ }
+.add-prod-bottom {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  margin-left: 1em;
+}
+.add-prod-bottom input {
+  padding: .19em;
+  margin-bottom: 0.2em;
+}
+.add-prod-columns{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  column-gap: 1em;
+  row-gap: 1em;
+}
+.hide{
+  display: none
+}
+.hr-admin {
+  width:100%; 
+  height:5px; 
+  margin-top: 1em;
+  background: rgb(117, 114, 114);
+}
+
+/*//// SIGN IN/REGISTER PAGE /////*/
+.sign-form{
+  height: 100%;
+  background-color: #cedddb;
+  padding: 4em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+  color: rgb(77, 74, 74);
+ }
+.sign-form h2 {
+  margin-bottom: 1em;
+}
+/*//// CART/CHECKOUT/SIGN IN/REGISTER PAGE /////*/
+.form-text p{
+  margin-top: 1em;
+}
+/*//// SIGN IN PAGE /////*/
+.form-text p a{
+  color: rgb(77, 74, 74);
+  text-decoration: underline;
+}
+/*//// SHIPPING/SIGN IN/REGISTER PAGE /////*/
+.sign-input {
+  width: 27em;
+  padding: 20px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: rgb(77, 74, 74);
+ }
+
+/*//// CART PAGE /////*/
+.cart {
+  background-color: #cedddb;
+  height: 100%;
+  padding: 4em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+  color: rgb(77, 74, 74);
+  }
+.form {
+  background-color: rgb(252, 249, 249);
+  padding: 3em;
+  border-radius: 10px;
+}
+.cart hr { 
+  width:100%; 
+  height:1px; 
+  background: #fff; 
+  margin-bottom: 1.5em;
+}
+/*//// CART/CHECKOUTFORM PAGE /////*/
+.cart-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 1em;
+}
+.cart-box {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  margin-bottom: 1em;
+}
+.cart-box p {
+  margin-bottom: .3em;
+  margin-left: 0em;
+  margin-right: 1em;
+}
+.cart-stotal {
+  padding-left: 2em;
+}
+.checkout-btn {
+  width: 25em;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: rgb(77, 74, 74);
+}
+
+ /*//// CHECKOUT PAGE /////*/  
+.checkout-form {
+  background-color: #cedddb;
+  height: 100%;
+  padding: 4em;
+  display: flex;
+  flex-direction: row;
+  color: rgb(77, 74, 74);
+  justify-content: space-evenly; 
+  column-gap: 1em;
+  row-gap: 1em;
+  }
+.checkout-form h2 {
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+/*//// SHIPPING PAGE /////*/  
+.checkout-shipping-info {
+  background-color: rgb(252, 249, 249);
+  padding: 1em;
+  border-radius: 5px;
+  margin-top: 1em;
+  width: 25em;
+  font-style: oblique;
+  font-size: smaller;
+}
+.checkout-shipping-info h4 {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  text-decoration: underline;
+}
+
+/*//// CHECKOUTFORM PAGE /////*/
+.checkout-cart {
+  max-width: 20em;
+  background-color: rgb(252, 249, 249);
+  padding: 2em;
+  border-radius: 10px;
+  margin-top: 2em;
+}
+.hr-line{
+  margin-bottom: 1em;
+}
+
+/*//// FOOTER /////*/   
+.footer {
+  background-color: #9fb9b9;
+  color: rgb(77, 74, 74);
+  height: 100%;
+  padding: 1.3em 10%;
+}
+.footer-box{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2em;
+  margin-bottom: 3em;
+}
+.footer-content h3,h4,p{
+  margin: .5em 0em .5em 0em;
+}
+.footer-content h4{
+  color: #ffffff; 
+}
+.footer-content p a:hover{
+  color: white;
+}
+.footer-content a{
+  color: rgb(77, 74, 74);
+  text-decoration: none;
+}
+.footer-content i{
+  margin-right: 1em;
+}
+
+/*//// GENERAL /////*/
+.red {
+  color: red;
+  margin-top: 1em;
+}
+
+.green {
+  color: green;
+  margin-top: 1em;
+}
+
+/*//// RESPONSIVE PAGES /////*/
+@media(max-width: 1100px){
+  .add-prod-columns{
+    display: flex;
+    flex-direction: column;
+    column-gap: 1em;
+    row-gap: 1em;
+  }
+  .prod-box{
+    grid-template:  "1fr 1fr 1fr" 250px;
+    grid-template-rows: auto auto auto; 
+    grid-gap: 2em 1em;  
+    margin-right: 2em;
+  }
+  .head-img{
+    display: none;
+  }
+  
+}
+@media(max-width: 900px){
+  .navlink{
+    display: none;
+  }
+  .menu-icon{
+    position: fixed;
+    display:flex;
+    right: 25px;
+    top: 18px;
+    font-size: 30px;
+    color: rgb(77, 74, 74);
+    z-index: 100;
+  }
+  .side-drawer{
+    display:flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    min-width: 130px;
+    background-color: rgb(185, 182, 182);
+    box-shadow: 2px 0px 5px rgb(112, 112, 112);;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 70;
+  }
+  .side-drawer-items{
+    list-style: none;
+    margin-top: 15em;
+  }
+  .navlink-side{
+    margin-bottom: 2em;
+    text-decoration: none;
+    color: rgb(77, 74, 74);
+  }
+  .navlink-side:hover,
+  .navlink-side:active{
+    color: white;
+  }
+  .logo {
+    height: 50px;
+    margin-top:10px;
+  }
+  .add-prod-columns{
+    display: flex;
+    flex-direction: column;
+  }
+  .add-product{
+    margin-top: 2em;
+    margin-left: 2em;
+    margin-bottom: 4em;
+    display: grid;
+    grid-template:  "1fr" 200px;
+    grid-template-rows: auto; 
+    grid-gap: 0em 1em;  
+  }
+  .prod-box{
+    grid-gap: 2em 1em; 
+    grid-template:  "1fr 1fr" 200px;
+    grid-template-rows: auto auto auto; 
+    margin-right: 2em;
+  }
+  .checkout-form {
+    background-color: #cedddb;
+    height: 100%;
+    padding: 4em;
+    display: flex;
+    flex-direction: column;
+    color: rgb(77, 74, 74);
+    justify-content: space-evenly; 
+    column-gap: 1em;
+    row-gap: 1em;
+  }
+  .checkout-btn {
+    width: 22em;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: rgb(77, 74, 74);
+  }
+  .form {
+    background-color: rgb(252, 249, 249);
+    padding: 2em;
+    border-radius: 10px;
+  }
+}
+
+@media(max-width: 650px){
+  .products {
+    height: 100%;
+    display: grid;
+    justify-content: center;
+    background-color:rgb(238, 236, 236);
+    padding: 1em 0em 1em 0em;
+    color:  rgb(77, 74, 74);
+  }
+  .add-prod-columns{
+    display: flex;
+    flex-direction: column;
+  }
+  .prod-admin{
+    display: grid;
+    grid-template:  "1fr" 200px;
+    grid-template-rows: auto auto auto; 
+    grid-gap: 0em 0em; 
+    margin-left: 0%; 
+  }
+  .add-prod-bottom {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    margin-top: 1em;
+    margin-left: 0%;
+  }
+  .prod-box{
+    grid-gap: 1em 1em; 
+    grid-template:  "1fr" 200px;
+    grid-template-rows: auto; 
+    margin-right: 2em;
+    margin-left: 2em;
+  }
+  .margin-left{
+    margin-left: 2em;
+  }
+  .checkout-form {
+    background-color: #cedddb;
+    height: 100%;
+    padding: 4em;
+    display: flex;
+    flex-direction: column;
+    color: rgb(77, 74, 74);
+    justify-content: space-evenly; 
+    column-gap: 1em;
+    row-gap: 1em;
+  }
+  .checkout-btn {
+    width: 22em;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: rgb(77, 74, 74);
+  }
+  .form {
+    background-color: rgb(252, 249, 249);
+    padding: 1em;
+    border-radius: 10px;
+    width: 19em;
+  }
+  .footer-box{
+    grid-template:  "1fr" 250px
+                    "1fr" 250px;
+
+    grid-gap: 2em;  
+    grid-template-rows: auto auto auto; 
+  }
+}

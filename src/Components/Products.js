@@ -44,7 +44,7 @@ const Products = ({ prodList, setProdList, cart, setCart, localCart }) => {
         arr.map((ele, idx) => {
             return ele.stock > 0 ?
                 <div key={idx}>
-                    <div class="box">
+                    <div className="box">
                         <img className='prod-img' src={ele.image} alt={ele.name} />
                         <button onClick={() => addToCart(ele)} className='btn'>+</button>
                     </div>
@@ -60,7 +60,7 @@ const Products = ({ prodList, setProdList, cart, setCart, localCart }) => {
         arr.map((ele, idx) => {
             return ele.onSale === true && ele.stock > 0 ?
                 <div key={idx}>
-                    <div class="box">
+                    <div className="box">
                         <img className='prod-img' src={ele.image} alt={ele.name} />
                         <button onClick={() => addToCart(ele)} className='btn'>+</button>
                     </div>

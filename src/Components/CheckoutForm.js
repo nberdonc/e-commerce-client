@@ -95,7 +95,7 @@ const CheckoutForm = ({ cart, cartTotal, setCartTotal, setCart, localCart, order
             const { id } = paymentMethod;
 
             try {
-                let url = "http://localhost:3000/checkout"
+                let url = "http://localhost:3000/checkout" //"https://sleepy-hamlet-65384.herokuapp.com/checkout"
                 let promise = axios.post(url, {
                     id,
                     amount: cartTotal,

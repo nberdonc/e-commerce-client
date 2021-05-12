@@ -18,17 +18,19 @@ const Admin = ({ prodList, setProdList, user }) => {
 
     let renderProductNames = (arr) => (
         arr.map((ele, idx) => {
-            return <div key={idx}>
-                <div class="box">
-                    <img className='prod-img' src={ele.image} alt={ele.name} />
-                </div>
-                <div className='prod-bottom'>
-                    <div>
-                        <p>{ele.name}</p>
-                        <p>Price: {ele.price}€</p>
-                    </div>
+            return <div className='prod-admin-line' key={idx}>
+                <div className="box-admin">
+                    <img className='prod-img-admin' src={ele.image} alt={ele.name} />
                     <div className='prod-btns'>
                         <button id={ele._id} onClick={deleteOneProduct}>DEL</button>
+                    </div>
+                </div>
+                
+                <div className='prod-bottom-admin'>
+                    <div>
+                        <p>Name: {ele.name}</p>
+                        <p>Price: {ele.price}€</p>
+                        <p>Id: {ele._id}</p>
                     </div>
                 </div>
             </div>
@@ -81,8 +83,8 @@ const Admin = ({ prodList, setProdList, user }) => {
 
     let renderFound = (ele) => {
         return <div>
-            <div class="box">
-                <img className='prod-img' src={findImage} alt={ele.name} />
+            <div class="box-admin">
+                <img className='prod-img-admin' src={findImage} alt={ele.name} />
             </div>
             <div className='prod-bottom'>
                 <div>
@@ -306,7 +308,7 @@ const Admin = ({ prodList, setProdList, user }) => {
     }
 
     return (
-        <div id="products" className='products'>
+        <div id="products" className='products-admin'>
             <div className='prod-admin'>
                 <h2>FIND/UPD/DEL USER</h2>
                 <form className="margin-left" onSubmit={searchUser}>
@@ -329,11 +331,12 @@ const Admin = ({ prodList, setProdList, user }) => {
             <hr className="hr-admin"></hr>
             <div className="add-prod-columns">
                 <div>
-                    <h2>ADD PRODUCT</h2>
+                    
                     <div className='add-product'>
-                        <div className="box">
-                            <img className='prod-img' src={addImage} alt="NEW IMG" />
-                            <button onClick={addOneProduct} className='btn'>+</button>
+                        <h2>ADD PRODUCT</h2>
+                        <div className="box-admin">
+                            <img className='prod-img-admin' src={addImage} alt="NEW IMG" />
+                            <button onClick={addOneProduct} className='btn-admin'>+</button>
                         </div>
                         <div className='add-prod-bottom'>
                             <p>Name:</p><input onChange={handleNameChange} value={name} type='text' placeholder=""></input>
@@ -354,7 +357,7 @@ const Admin = ({ prodList, setProdList, user }) => {
                         </form>
                     </div>
                     <div className='add-product'>
-                        <div className="box">{renderFound(foundProd)}</div>
+                        <div className="box-admin">{renderFound(foundProd)}</div>
                         <div className='add-prod-bottom'>
                             <p>Name:</p><input onChange={handlenewName} value={newName} type='text' placeholder=""></input>
                             <p>Price:</p><input onChange={handlenewPrice} value={newPrice} type='text' placeholder=""></input>
@@ -369,7 +372,7 @@ const Admin = ({ prodList, setProdList, user }) => {
             </div>
             <hr className="hr-admin"></hr>
             <h2>ALL PRODUCTS</h2>
-            <div className="prod-box">{renderProductNames(prodList)}</div>
+            <div className="prod-box-admin">{renderProductNames(prodList)}</div>
         </div>
     )
 }

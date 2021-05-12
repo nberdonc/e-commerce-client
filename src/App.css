@@ -1,7 +1,6 @@
 * {
   margin: 0;
   padding: 0; 
-  overflow-x: hidden;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   letter-spacing: 1px;
 }
@@ -26,8 +25,8 @@ header{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  padding: 2em 1.5em;
-  height: 4em;
+  padding-top: 2em;
+  height: 6em;
   list-style: none;
   z-index: 70;
   background-color: #95cfc6;
@@ -48,32 +47,12 @@ header{
   border-radius: 50%;
   padding-bottom:10px;
 }
-/*//// HOME PAGE /////*/
-/*.head-img {
-  background-color: #95cfc6;
-  margin-bottom: 2em;
-  margin-left: 2em;
-  margin-right: 2em;
-  display: flex;
-  align-items: center;
-  justify-content:space-around;
-}
-.head-img img {
-  width: 200px;
-  height: 200px;
-  margin-right: 1em;
-  margin-left: 1em;
-  object-fit: cover;
-  border-radius: 15%;
-  background-color: transparent;
-  background-size: inherit;
-}*/
 
-/*//// PRODUCTS/ADMIN PAGE /////*/
+/*//// PRODUCTS PAGE /////*/
 .products {
   height: 100%;
   width: inherit;
-  background-color:rgb(238, 236, 236);
+  background-color:#cedddb;
   padding: 1em 4em 1em 4em;
   color:  rgb(77, 74, 74);
 }
@@ -82,7 +61,6 @@ header{
   flex-direction: row;
   justify-content: space-between;
   width: 250px;
-  margin-top: 1.5em;
 }
 .box {
   position: relative;
@@ -121,13 +99,18 @@ header{
   margin-top: 1em;
   object-fit: cover;
   }
-
-/*//// PRODUCTS PAGE /////*/
 .products h1 {
   margin-left: 1em;
 }
 
 /*//// ADMIN PAGE /////*/
+.products-admin {
+  height: 100%;
+  width: inherit;
+  background-color:#cedddb;
+  padding: 1em 4em 1em 4em;
+  color:  rgb(77, 74, 74);
+}
 .products h2 {
   margin-left: 1em;
   margin-bottom: 1em;
@@ -146,9 +129,9 @@ header{
   justify-content: space-around;
 }
 .prod-btns button {
-  padding: 12px;
+  padding: 5px 16px;
   color:  rgb(77, 74, 74);
-  border-radius: 10%;
+  border-radius: 2px;
   background-color: #f7f9fa;
   border: 1px solid grey;
  }
@@ -165,13 +148,55 @@ header{
   margin-right: 1em;
   margin-top: 1.5em;
 }
+.prod-admin-line{
+  display: flex;
+    justify-content: space-around;
+    max-width: 500px;
+    padding: 1em;
+    background-color: rgb(182, 192, 190);
+    margin: auto;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color:  rgb(77, 74, 74);;
+}
+.box-admin {
+  position: relative;
+  height: 60px;
+  width: 60px;
+  background-color: rgb(77, 74, 74);;
+  background-size: inherit;
+}
+.btn-admin  {
+  position: absolute;
+  top: 19%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  border-radius: 50%;
+  width: 15%;
+  border: 1px solid white;
+}
+.btn-admin:hover {
+  background-color: #8ea0a3
+}
+.prod-box-admin  {
+  margin-top: 1em;
+  margin-left: 1em;
+  margin-right: 2em;
+ }
+.prod-img-admin  {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  }
+  .prod-bottom-admin {
+    margin-left: 1em;
+    
+  }
 .add-product {
   margin-left: 1em;
   margin-bottom: 4em;
-  display: grid;
-  grid-template:"1fr 1fr" 33.33vh;
-  grid-template-rows: auto auto; 
-  grid-gap: 0em 1em;  
+  
  }
 .add-prod-bottom {
   display: flex;
@@ -392,7 +417,9 @@ header{
   .head-img{
     display: none;
   }
-  
+  .prod-box-admin  { 
+    margin-right: 2em;
+   }
 }
 @media(max-width: 900px){
   .navlink{
@@ -402,7 +429,7 @@ header{
     position: fixed;
     display:flex;
     right: 25px;
-    top: 18px;
+    padding-top: 18px;
     font-size: 30px;
     color: rgb(77, 74, 74);
     z-index: 100;
@@ -456,6 +483,9 @@ header{
     grid-template-rows: auto auto auto; 
     margin-right: 2em;
   }
+  .prod-box-admin  {
+    margin-right: 2em; 
+   }
   .checkout-form {
     background-color: #cedddb;
     height: 100%;
@@ -493,6 +523,14 @@ header{
     padding: 1em 0em 1em 0em;
     color:  rgb(77, 74, 74);
   }
+  .products-admin {
+    height: 100%;
+    display: grid;
+    justify-content: center;
+    background-color:rgb(238, 236, 236);
+    padding: 1em 0em 1em 0em;
+    color:  rgb(77, 74, 74);
+  }
   .add-prod-columns{
     display: flex;
     flex-direction: column;
@@ -518,6 +556,10 @@ header{
     margin-right: 2em;
     margin-left: 2em;
   }
+  .prod-box-admin{
+    margin-right: 2em;
+    margin-left: 2em;
+  }  
   .margin-left{
     margin-left: 2em;
   }

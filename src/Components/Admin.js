@@ -19,13 +19,13 @@ const Admin = ({ prodList, setProdList, user }) => {
     let renderProductNames = (arr) => (
         arr.map((ele, idx) => {
             return <div className='prod-admin-line' key={idx}>
-                <div className="box-admin">
+                <div className="prod-img-background">
                     <img className='prod-img-admin' src={ele.image} alt={ele.name} />
-                    <div className='prod-btns'>
+                    <div className='add-del-upd-btns'>
                         <button id={ele._id} onClick={deleteOneProduct}>DEL</button>
                     </div>
                 </div>
-                
+
                 <div className='prod-bottom-admin'>
                     <div>
                         <p>Name: {ele.name}</p>
@@ -82,21 +82,18 @@ const Admin = ({ prodList, setProdList, user }) => {
     }
 
     let renderFound = (ele) => {
-        return <div>
-            <div class="box-admin">
-                <img className='prod-img-admin' src={findImage} alt={ele.name} />
-            </div>
-            <div className='prod-bottom'>
-                <div>
-                    <p>{ele.name}</p>
-                    <p className={hiddenInfo} >{ele.price}€</p>
+        return (
+            <div className='img-btn-row'>
+                <div className="prod-img-background">
+                    <img className='prod-img-admin' src={findImage} alt={ele.name} />
                 </div>
-                <div className='prod-btns'>
-                    <button className={hiddenInfo} id={ele._id} onClick={deleteOneProduct}>DEL</button>
-                    <button className={hiddenInfo} id={ele._id} onClick={updateOneProduct}>UPD</button>
+                <div className='add-del-upd-btns'>
+                    <button onClick={addOneProduct}>ADD</button>
+                    <button id={ele._id} onClick={updateOneProduct}>UPD</button>
+                    <button id={ele._id} onClick={deleteOneProduct}>DEL</button>
                 </div>
             </div>
-        </div>
+        )
     }
 
     ////////////////////////////// TO ADD ONE PRODUCT //////////////////////////////
@@ -308,67 +305,60 @@ const Admin = ({ prodList, setProdList, user }) => {
     }
 
     return (
-        <div id="products" className='products-admin'>
-            <div className='prod-admin'>
-                <h2>FIND/UPD/DEL USER</h2>
-                <form className="margin-left" onSubmit={searchUser}>
-                    <button type="submit" className='find-btn'>FIND</button>
-                    <input className='find-btn' value={inputUser} onChange={handleFindUser} type='text' placeholder='User e-mail'></input>
-                </form>
-            </div>
-            <div className="margin-left">
-                <div className='add-prod-bottom'>
-                    <p>User name:</p><input value={userName} type='text' placeholder=""></input>
-                    <p>User last name:</p><input value={userLastName} type='text' placeholder=""></input>
-                    <p>User e-mail:</p><input value={userEmail} type='email' placeholder=""></input>
-                    <p>User is admin: (True/False):</p><input onChange={handleAdminChange} value={userisAdmin} type='boolean' placeholder=""></input>
-                    <div className='prod-btns'>
-                        <button id={userID} onClick={deleteOneUser}>DEL</button>
-                        <button id={userID} onClick={updateOneUser}>UPD</button>
+        <div className='admin-page'>
+            <div className="uses-columns">
+                <div className='admin-uses'>
+                    <h2>FIND/UPD/DEL USER</h2>
+                    <form onSubmit={searchUser}>
+                        <button type="submit" className='find-btn'>FIND</button>
+                        <input className='input-btn' value={inputUser} onChange={handleFindUser} type='text' placeholder='User e-mail'></input>
+                    </form>
+                    <div className='input-text'>
+                        <p>User name:</p><input value={userName} type='text' placeholder=""></input>
+                        <p>User last name:</p><input value={userLastName} type='text' placeholder=""></input>
+                        <p>User e-mail:</p><input value={userEmail} type='email' placeholder=""></input>
+                        <p>User is admin: (True/False):</p><input onChange={handleAdminChange} value={userisAdmin} type='boolean' placeholder=""></input>
+                        <div className='add-del-upd-btns'>
+                            <button id={userID} onClick={deleteOneUser}>DEL</button>
+                            <button id={userID} onClick={updateOneUser}>UPD</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <hr className="hr-admin"></hr>
-            <div className="add-prod-columns">
-                <div>
-                    
-                    <div className='add-product'>
-                        <h2>ADD PRODUCT</h2>
-                        <div className="box-admin">
+                <div className='admin-uses'>
+                    <h2>ADD PRODUCT</h2>
+                    <div className='img-btn-row'>
+                        <div className="prod-img-background">
                             <img className='prod-img-admin' src={addImage} alt="NEW IMG" />
-                            <button onClick={addOneProduct} className='btn-admin'>+</button>
                         </div>
-                        <div className='add-prod-bottom'>
-                            <p>Name:</p><input onChange={handleNameChange} value={name} type='text' placeholder=""></input>
-                            <p>Price:</p><input onChange={handlePriceChange} value={price} type='text' placeholder=""></input>
-                            <p>Category:</p><input onChange={handleCategoryChange} value={category} type='text' placeholder=""></input>
-                            <p>On sale: (True/False) </p><input onChange={handleOnSaleChange} value={inputOnSale} type='text' placeholder=""></input>
-                            <p>Stock:</p><input onChange={handleStockChange} value={inputStock} type='text' placeholder=""></input>
-                            <p>Image Link:</p><input onChange={handleImageChange} value={inputAddImage} type='text' placeholder=""></input>
+                        <div className='add-del-upd-btns'>
+                            <button onClick={addOneProduct}>ADD</button>
                         </div>
+                    </div>
+                    <div className='input-text'>
+                        <p>Name:</p><input onChange={handleNameChange} value={name} type='text' placeholder=""></input>
+                        <p>Price:</p><input onChange={handlePriceChange} value={price} type='text' placeholder=""></input>
+                        <p>Category:</p><input onChange={handleCategoryChange} value={category} type='text' placeholder=""></input>
+                        <p>On sale: (True/False) </p><input onChange={handleOnSaleChange} value={inputOnSale} type='text' placeholder=""></input>
+                        <p>Stock:</p><input onChange={handleStockChange} value={inputStock} type='text' placeholder=""></input>
+                        <p>Image Link:</p><input onChange={handleImageChange} value={inputAddImage} type='text' placeholder=""></input>
                     </div>
                 </div>
-                <div>
-                    <div className='prod-admin'>
-                        <h2>FIND/UPDATE PRODUCT</h2>
-                        <form className="margin-left" onSubmit={searchProduct}>
-                            <button type="submit" className='find-btn'>FIND</button>
-                            <input className='find-btn' value={inputProduct} onChange={handleFindChange} type='text' placeholder='Product Name'></input>
-                        </form>
-                    </div>
-                    <div className='add-product'>
-                        <div className="box-admin">{renderFound(foundProd)}</div>
-                        <div className='add-prod-bottom'>
-                            <p>Name:</p><input onChange={handlenewName} value={newName} type='text' placeholder=""></input>
-                            <p>Price:</p><input onChange={handlenewPrice} value={newPrice} type='text' placeholder=""></input>
-                            <p>Category:</p><input onChange={handlenewCategory} value={newCategory} type='text' placeholder=""></input>
-                            <p>On sale: (True/False)</p><input onChange={handlenewOnSale} value={newOnSale} type='text' placeholder=""></input>
-                            <p>Stock:</p><input onChange={handlenewStock} value={newStock} type='text' placeholder=""></input>
-                            <p>Image Link:</p><input onChange={handlenewImage} value={newImage} type='text' placeholder=""></input>
-                        </div>
+                <div className='admin-uses'>
+                    <h2>ADD/FIND/UPD/DEL PRODUCT</h2>
+                    <form onSubmit={searchProduct}>
+                        <button type="submit" className='find-btn'>FIND</button>
+                        <input className='input-btn' value={inputProduct} onChange={handleFindChange} type='text' placeholder='Product Name'></input>
+                    </form>
+                    <div className='renderFound'>{renderFound(foundProd)}</div>
+                    <div className='input-text'>
+                        <p>Name:</p><input onChange={handlenewName} value={newName} type='text' placeholder=""></input>
+                        <p>Price:</p><input onChange={handlenewPrice} value={newPrice} type='text' placeholder=""></input>
+                        <p>Category:</p><input onChange={handlenewCategory} value={newCategory} type='text' placeholder=""></input>
+                        <p>On sale: (True/False)</p><input onChange={handlenewOnSale} value={newOnSale} type='text' placeholder=""></input>
+                        <p>Stock:</p><input onChange={handlenewStock} value={newStock} type='text' placeholder=""></input>
+                        <p>Image Link:</p><input onChange={handlenewImage} value={newImage} type='text' placeholder=""></input>
                     </div>
                 </div>
-
             </div>
             <hr className="hr-admin"></hr>
             <h2>ALL PRODUCTS</h2>

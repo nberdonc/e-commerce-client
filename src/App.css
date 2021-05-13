@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0; 
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  letter-spacing: 1px;
+  letter-spacing: 0.2px;
 }
 body{
   min-width: 335px;
@@ -104,116 +104,101 @@ header{
 }
 
 /*//// ADMIN PAGE /////*/
-.products-admin {
+.admin-page {
   height: 100%;
   width: inherit;
   background-color:#cedddb;
   padding: 1em 4em 1em 4em;
   color:  rgb(77, 74, 74);
 }
-.products h2 {
-  margin-left: 1em;
+.admin-page h2 {
   margin-bottom: 1em;
-  margin-top: 1em;
 }
-.prod-admin {
-  max-width: 620px;
-  display: grid;
-  grid-template:  "1fr 1fr" 33.33vh;
-  grid-template-rows: auto auto; 
-  grid-gap: 0em 1em; 
-}
-.prod-btns {
+.uses-columns{
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  column-gap: 1em;
+  row-gap: 1em;
 }
-.prod-btns button {
-  padding: 5px 16px;
-  color:  rgb(77, 74, 74);
-  border-radius: 2px;
-  background-color: #f7f9fa;
-  border: 1px solid grey;
- }
-
-.prod-btns button:hover {
-  background-color: #8ea0a3
+.admin-uses {
+  margin: 2em 0em 2em 0em;
+  width: 280px;
+  padding: 2em;
+  border-style: solid;
+  border-width: 0.5px;
+  border-color:  rgb(77, 74, 74);
+  background-color: rgb(182, 192, 190);
 }
-.find-btn {
+.find-btn{
   padding: 7px;
   color:  rgb(77, 74, 74);
   border-radius: 5%;
   background-color: #f7f9fa;
   border: 1px solid grey;
   margin-right: 1em;
-  margin-top: 1.5em;
 }
-.prod-admin-line{
+.renderFound{
+  margin-top: 1em;
+}
+.input-btn{
+  padding: 7px;
+  color:  rgb(77, 74, 74);
+  border-radius: 5%;
+  background-color: #f7f9fa;
+  border: 1px solid grey;
+  width: 203px;
+}
+.add-del-upd-btns {
   display: flex;
-    justify-content: space-around;
-    max-width: 500px;
-    padding: 1em;
-    background-color: rgb(182, 192, 190);
-    margin: auto;
-    border-style: solid;
-    border-width: 0.5px;
-    border-color:  rgb(77, 74, 74);;
+  flex-direction: row;
+  justify-content: space-around;
 }
-.box-admin {
+.add-del-upd-btns button {
+  padding: 5px 16px;
+  color:  rgb(77, 74, 74);
+  border-radius: 2px;
+  background-color: #f7f9fa;
+  border: 1px solid grey;
+ }
+.add-del-upd-btns button:hover {
+  background-color: #8ea0a3
+}
+.input-text{
+  max-width: 270px;
+}
+.input-text input{
+  padding: .19em;
+  width: 270px;
+}
+.img-btn-row{
+  display: flex;
+  justify-content: space-around;
+}
+.prod-img-background {
   position: relative;
   height: 60px;
   width: 60px;
   background-color: rgb(77, 74, 74);;
   background-size: inherit;
 }
-.btn-admin  {
-  position: absolute;
-  top: 19%;
-  left: 85%;
-  transform: translate(-50%, -50%);
-  font-size: 30px;
-  border-radius: 50%;
-  width: 15%;
-  border: 1px solid white;
-}
-.btn-admin:hover {
-  background-color: #8ea0a3
-}
-.prod-box-admin  {
-  margin-top: 1em;
-  margin-left: 1em;
-  margin-right: 2em;
- }
 .prod-img-admin  {
   width: 60px;
   height: 60px;
   object-fit: cover;
-  }
-  .prod-bottom-admin {
-    margin-left: 1em;
-    
-  }
-.add-product {
-  margin-left: 1em;
-  margin-bottom: 4em;
-  
- }
-.add-prod-bottom {
-  display: flex;
-  flex-direction: column;
-  width: 250px;
-  margin-left: 1em;
 }
-.add-prod-bottom input {
-  padding: .19em;
-  margin-bottom: 0.2em;
-}
-.add-prod-columns{
+.prod-admin-line{
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  column-gap: 1em;
-  row-gap: 1em;
+  justify-content: space-around;
+  max-width: 500px;
+  padding: 1em;
+  background-color: rgb(182, 192, 190);
+  margin: auto;
+  border-style: solid;
+  border-width: 0.5px;
+  border-color:  rgb(77, 74, 74);;
+}
+.prod-bottom-admin {
+  margin-left: 1em;   
 }
 .hide{
   display: none
@@ -224,6 +209,10 @@ header{
   margin-top: 1em;
   background: rgb(117, 114, 114);
 }
+.prod-box-admin{
+  margin-right: 2em;
+  margin-left: 2em;
+}  
 
 /*//// SIGN IN/REGISTER PAGE /////*/
 .sign-form{
@@ -402,7 +391,7 @@ header{
 
 /*//// RESPONSIVE PAGES /////*/
 @media(max-width: 1100px){
-  .add-prod-columns{
+  .uses-columns{
     display: flex;
     flex-direction: column;
     column-gap: 1em;
@@ -417,9 +406,6 @@ header{
   .head-img{
     display: none;
   }
-  .prod-box-admin  { 
-    margin-right: 2em;
-   }
 }
 @media(max-width: 900px){
   .navlink{
@@ -464,28 +450,12 @@ header{
     height: 50px;
     margin-top:10px;
   }
-  .add-prod-columns{
-    display: flex;
-    flex-direction: column;
-  }
-  .add-product{
-    margin-top: 2em;
-    margin-left: 2em;
-    margin-bottom: 4em;
-    display: grid;
-    grid-template:  "1fr" 200px;
-    grid-template-rows: auto; 
-    grid-gap: 0em 1em;  
-  }
   .prod-box{
     grid-gap: 2em 1em; 
     grid-template:  "1fr 1fr" 200px;
     grid-template-rows: auto auto auto; 
     margin-right: 2em;
   }
-  .prod-box-admin  {
-    margin-right: 2em; 
-   }
   .checkout-form {
     background-color: #cedddb;
     height: 100%;
@@ -531,36 +501,11 @@ header{
     padding: 1em 0em 1em 0em;
     color:  rgb(77, 74, 74);
   }
-  .add-prod-columns{
-    display: flex;
-    flex-direction: column;
-  }
-  .prod-admin{
-    display: grid;
-    grid-template:  "1fr" 200px;
-    grid-template-rows: auto auto auto; 
-    grid-gap: 0em 0em; 
-    margin-left: 0%; 
-  }
-  .add-prod-bottom {
-    display: flex;
-    flex-direction: column;
-    width: 250px;
-    margin-top: 1em;
-    margin-left: 0%;
-  }
   .prod-box{
     grid-gap: 1em 1em; 
     grid-template:  "1fr" 200px;
     grid-template-rows: auto; 
     margin-right: 2em;
-    margin-left: 2em;
-  }
-  .prod-box-admin{
-    margin-right: 2em;
-    margin-left: 2em;
-  }  
-  .margin-left{
     margin-left: 2em;
   }
   .checkout-form {

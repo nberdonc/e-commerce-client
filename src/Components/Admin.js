@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 //import banana from './Pictures/banana.jpg'
-import { displayProducts, findOneProduct, addProduct, deleteProduct, updateProduct, findUser, deleteUser, updateUser } from '../AxiosLink'
+import { displayProducts, findOneProduct, addProduct, deleteProduct, updateProduct, findUser, deleteUser, updateUser }
+    from '../AxiosLink'
 
 const Admin = ({ prodList, setProdList, user }) => {
 
@@ -18,22 +19,23 @@ const Admin = ({ prodList, setProdList, user }) => {
 
     let renderProductNames = (arr) => (
         arr.map((ele, idx) => {
-            return <div className='prod-admin-line' key={idx}>
-                <div className="prod-img-background">
-                    <img className='prod-img-admin' src={ele.image} alt={ele.name} />
-                    <div className='add-del-upd-btns'>
+            return (
+                <table className='prod-admin-line' key={idx}>
+                    <tr className="prod-img-background">
+                        <img className='prod-img-admin' src={ele.image} alt={ele.name} />
+                    </tr>
+                    <tr className='add-del-upd-btns'>
                         <button id={ele._id} onClick={deleteOneProduct}>DEL</button>
-                    </div>
-                </div>
-
-                <div className='prod-bottom-admin'>
-                    <div>
-                        <p>Name: {ele.name}</p>
-                        <p>Price: {ele.price}€</p>
-                        <p>Id: {ele._id}</p>
-                    </div>
-                </div>
-            </div>
+                    </tr>
+                    <tr className='prod-bottom-admin'>
+                        <td>
+                            <p>Name: {ele.name}</p>
+                            <p>Price: {ele.price}€</p>
+                            <p>Id: {ele._id}</p>
+                        </td>
+                    </tr>
+                </table>
+            )
         })
     )
 
@@ -71,12 +73,12 @@ const Admin = ({ prodList, setProdList, user }) => {
             setInputProduct("");
             //to show old data in input
             setFindImage(found.image)
-            setnewName(oldName)
-            setnewPrice(oldPrice)
-            setnewCategory(oldCategory)
-            setnewOnSale(oldOnSale)
-            setnewStock(oldStock)
-            setnewImage(oldImage)
+            setName(oldName)
+            setPrice(oldPrice)
+            setCategory(oldCategory)
+            setInputOnSale(oldOnSale)
+            setInputStock(oldStock)
+            setInputAddImage(oldImage)
             setOldId(oldId)
         }
     }
@@ -102,11 +104,11 @@ const Admin = ({ prodList, setProdList, user }) => {
     const [name, setName] = useState()
     const [price, setPrice] = useState()
     const [category, setCategory] = useState()
-    const [onSale, setOnSale] = useState(false)
+    const [defaultOnSale, setDefaultOnSale] = useState(false)
     const [inputOnSale, setInputOnSale] = useState()
-    const [stock, setStock] = useState(0)
+    const [defaultStock, setDefaultStock] = useState(0)
     const [inputStock, setInputStock] = useState()
-    const [addImage, setAddImage] = useState(defaultPic)
+    const [defauItImage, setDefauItImage] = useState(defaultPic)
     const [inputAddImage, setInputAddImage] = useState("")
 
 
@@ -122,20 +124,20 @@ const Admin = ({ prodList, setProdList, user }) => {
     }
     let handleOnSaleChange = (e) => {
         setInputOnSale(e.target.value)
-        setOnSale(e.target.value)
+        setDefaultOnSale(e.target.value)
     }
     let handleStockChange = (e) => {
         setInputStock(e.target.value)
-        setStock(e.target.value)
+        setDefaultStock(e.target.value)
     }
     let handleImageChange = (e) => {
-        setAddImage(e.target.value)
+        setDefauItImage(e.target.value)
         setInputAddImage(e.target.value)
     }
 
     let addOneProduct = async (e) => {
         e.preventDefault()
-        let response = await addProduct(name, price, category, onSale, quantity, addImage, stock, token)
+        let response = await addProduct(name, price, category, inputOnSale, quantity, inputAddImage, inputStock, token)
         if (response === false || name === "") {
             console.log("product already exists")
         }
@@ -148,53 +150,20 @@ const Admin = ({ prodList, setProdList, user }) => {
         setName("")
         setPrice("")
         setCategory("")
-        setOnSale(false)
+        setDefaultOnSale(false)
         setInputStock("")
-        setStock(0)
-        setAddImage(defaultPic)
+        setDefaultStock(0)
+        setFindImage(defaultPic)
         setInputAddImage("")
         setInputOnSale("")
     }
     ////////////////////////////// TO UPDATE ONE PRODUCT //////////////////////////////
-    const [newName, setnewName] = useState()
-    const [newPrice, setnewPrice] = useState()
-    const [newCategory, setnewCategory] = useState()
-    const [newOnSale, setnewOnSale] = useState()
-    const [newStock, setnewStock] = useState()
-    const [newImage, setnewImage] = useState()
-
-
-    let handlenewName = (e) => {
-        console.log(e.target.value)
-        setnewName(e.target.value)
-    }
-    let handlenewPrice = (e) => {
-        console.log(e.target.value)
-        setnewPrice(e.target.value)
-    }
-    let handlenewCategory = (e) => {
-        console.log(e.target.value)
-        setnewCategory(e.target.value)
-    }
-    let handlenewOnSale = (e) => {
-        console.log(e.target.value)
-        setnewOnSale(e.target.value)
-    }
-    let handlenewStock = (e) => {
-        console.log(e.target.value)
-        setnewStock(e.target.value)
-    }
-    let handlenewImage = (e) => {
-        setFindImage(e.target.value)
-        console.log(e.target.value)
-        setnewImage(e.target.value)
-    }
 
     let updateOneProduct = async (e) => {
         e.preventDefault()
         let id = e.target.id
         let copyProdList = [...prodList]
-        let updProd = await updateProduct(oldId, newName, newPrice, newCategory, newOnSale, newStock, newImage, token)
+        let updProd = await updateProduct(oldId, name, price, category, inputOnSale, inputStock, inputAddImage, token)
         console.log("from admin page", updProd.updated)
         //to make oldProd disappear from screen
         copyProdList = copyProdList.filter(deleteProd => deleteProd._id !== id)
@@ -204,12 +173,12 @@ const Admin = ({ prodList, setProdList, user }) => {
         //to clear input
         setFoundProd([])
         setHiddenInfo("hide")
-        setnewName("")
-        setnewPrice("")
-        setnewCategory("")
-        setnewOnSale("")
-        setnewStock("")
-        setnewImage("")
+        setName("")
+        setPrice("")
+        setCategory("")
+        setInputOnSale("")
+        setInputStock("")
+        setDefauItImage("")
         setFindImage(defaultPic)
     }
 
@@ -225,12 +194,12 @@ const Admin = ({ prodList, setProdList, user }) => {
         //to make foundProd disappear from screen
         setFoundProd([])
         setHiddenInfo("hide")
-        setnewName("")
-        setnewPrice("")
-        setnewCategory("")
-        setnewOnSale("")
-        setnewStock("")
-        setnewImage("")
+        setName("")
+        setPrice("")
+        setCategory("")
+        setDefaultOnSale("")
+        setDefaultStock("")
+        setDefauItImage("")
         setFindImage(defaultPic)
     }
 
@@ -311,56 +280,52 @@ const Admin = ({ prodList, setProdList, user }) => {
                     <h2>FIND/UPD/DEL USER</h2>
                     <form onSubmit={searchUser}>
                         <button type="submit" className='find-btn'>FIND</button>
-                        <input className='input-btn' value={inputUser} onChange={handleFindUser} type='text' placeholder='User e-mail'></input>
+                        <input className='find-input' value={inputUser} onChange={handleFindUser} type='text'
+                            placeholder='User e-mail'></input>
                     </form>
+                    <div className='img-btn-row'>
+                        <div className="prod-img-background">
+                            <img className='prod-img-admin' src={findImage} alt="user" />
+                        </div>
+                        <div className='add-del-upd-btns'>
+                            <button id={userID} onClick={updateOneUser}>UPD</button>
+                            <button id={userID} onClick={deleteOneUser}>DEL</button>
+                        </div>
+                    </div>
                     <div className='input-text'>
                         <p>User name:</p><input value={userName} type='text' placeholder=""></input>
                         <p>User last name:</p><input value={userLastName} type='text' placeholder=""></input>
                         <p>User e-mail:</p><input value={userEmail} type='email' placeholder=""></input>
-                        <p>User is admin: (True/False):</p><input onChange={handleAdminChange} value={userisAdmin} type='boolean' placeholder=""></input>
-                        <div className='add-del-upd-btns'>
-                            <button id={userID} onClick={deleteOneUser}>DEL</button>
-                            <button id={userID} onClick={updateOneUser}>UPD</button>
-                        </div>
-                    </div>
-                </div>
-                <div className='admin-uses'>
-                    <h2>ADD PRODUCT</h2>
-                    <div className='img-btn-row'>
-                        <div className="prod-img-background">
-                            <img className='prod-img-admin' src={addImage} alt="NEW IMG" />
-                        </div>
-                        <div className='add-del-upd-btns'>
-                            <button onClick={addOneProduct}>ADD</button>
-                        </div>
-                    </div>
-                    <div className='input-text'>
-                        <p>Name:</p><input onChange={handleNameChange} value={name} type='text' placeholder=""></input>
-                        <p>Price:</p><input onChange={handlePriceChange} value={price} type='text' placeholder=""></input>
-                        <p>Category:</p><input onChange={handleCategoryChange} value={category} type='text' placeholder=""></input>
-                        <p>On sale: (True/False) </p><input onChange={handleOnSaleChange} value={inputOnSale} type='text' placeholder=""></input>
-                        <p>Stock:</p><input onChange={handleStockChange} value={inputStock} type='text' placeholder=""></input>
-                        <p>Image Link:</p><input onChange={handleImageChange} value={inputAddImage} type='text' placeholder=""></input>
+                        <p>User is admin: (True/False):</p><input onChange={handleAdminChange} value={userisAdmin}
+                            type='boolean' placeholder=""></input>
+                        <p>User address:</p><input value={userEmail} type='address' placeholder=""></input>
+                        <p>User phone:</p><input value={userEmail} type='phone' placeholder=""></input>
+
                     </div>
                 </div>
                 <div className='admin-uses'>
                     <h2>ADD/FIND/UPD/DEL PRODUCT</h2>
                     <form onSubmit={searchProduct}>
                         <button type="submit" className='find-btn'>FIND</button>
-                        <input className='input-btn' value={inputProduct} onChange={handleFindChange} type='text' placeholder='Product Name'></input>
+                        <input className='find-input' value={inputProduct} onChange={handleFindChange} type='text'
+                            placeholder='Product Name'></input>
                     </form>
-                    <div className='renderFound'>{renderFound(foundProd)}</div>
+                    <div>{renderFound(foundProd)}</div>
                     <div className='input-text'>
-                        <p>Name:</p><input onChange={handlenewName} value={newName} type='text' placeholder=""></input>
-                        <p>Price:</p><input onChange={handlenewPrice} value={newPrice} type='text' placeholder=""></input>
-                        <p>Category:</p><input onChange={handlenewCategory} value={newCategory} type='text' placeholder=""></input>
-                        <p>On sale: (True/False)</p><input onChange={handlenewOnSale} value={newOnSale} type='text' placeholder=""></input>
-                        <p>Stock:</p><input onChange={handlenewStock} value={newStock} type='text' placeholder=""></input>
-                        <p>Image Link:</p><input onChange={handlenewImage} value={newImage} type='text' placeholder=""></input>
+                        <p>Name:</p><input onChange={handleNameChange} value={name} type='text' placeholder=""></input>
+                        <p>Price:</p><input onChange={handlePriceChange} value={price} type='text' placeholder=""></input>
+                        <p>Category:</p><input onChange={handleCategoryChange} value={category} type='text'
+                            placeholder=""></input>
+                        <p>On sale: (True/False) </p><input onChange={handleOnSaleChange} value={inputOnSale} type='text'
+                            placeholder=""></input>
+                        <p>Stock:</p><input onChange={handleStockChange} value={inputStock} type='text' placeholder=""></input>
+                        <p>Image Link:</p><input onChange={handleImageChange} value={inputAddImage} type='text'
+                            placeholder=""></input>
                     </div>
                 </div>
             </div>
-            <hr className="hr-admin"></hr>
+            <hr className="hr-admin">
+            </hr>
             <h2>ALL PRODUCTS</h2>
             <div className="prod-box-admin">{renderProductNames(prodList)}</div>
         </div>

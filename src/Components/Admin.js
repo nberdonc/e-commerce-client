@@ -20,21 +20,19 @@ const Admin = ({ prodList, setProdList, user }) => {
     let renderProductNames = (arr) => (
         arr.map((ele, idx) => {
             return (
-                <table className='prod-admin-line' key={idx}>
-                    <tr className="prod-img-background">
+                <tr className='prod-admin-line' key={idx}>
+                    <td className="prod-img-background">
                         <img className='prod-img-admin' src={ele.image} alt={ele.name} />
-                    </tr>
-                    <tr className='add-del-upd-btns'>
+                    </td>
+                    <td className='del-btn'>
                         <button id={ele._id} onClick={deleteOneProduct}>DEL</button>
-                    </tr>
-                    <tr className='prod-bottom-admin'>
-                        <td>
-                            <p>Name: {ele.name}</p>
-                            <p>Price: {ele.price}€</p>
-                            <p>Id: {ele._id}</p>
-                        </td>
-                    </tr>
-                </table>
+                    </td>
+                    <td className='prod-bottom-admin'>
+                        <p><b>Name:</b>{ele.name}</p>
+                        <p><b>Price:</b>{ele.price}€</p>
+                        <p><b>OnSale:</b>{ele.onSale}</p>
+                    </td>
+                </tr>
             )
         })
     )
@@ -87,7 +85,7 @@ const Admin = ({ prodList, setProdList, user }) => {
         return (
             <div className='img-btn-row'>
                 <div className="prod-img-background">
-                    <img className='prod-img-admin' src={findImage} alt={ele.name} />
+                    <img className='uses-img-admin' src={findImage} alt={ele.name} />
                 </div>
                 <div className='add-del-upd-btns'>
                     <button onClick={addOneProduct}>ADD</button>
@@ -285,7 +283,7 @@ const Admin = ({ prodList, setProdList, user }) => {
                     </form>
                     <div className='img-btn-row'>
                         <div className="prod-img-background">
-                            <img className='prod-img-admin' src={findImage} alt="user" />
+                            <img className='uses-img-admin' src={findImage} alt="user" />
                         </div>
                         <div className='add-del-upd-btns'>
                             <button id={userID} onClick={updateOneUser}>UPD</button>
@@ -327,7 +325,7 @@ const Admin = ({ prodList, setProdList, user }) => {
             <hr className="hr-admin">
             </hr>
             <h2>ALL PRODUCTS</h2>
-            <div className="prod-box-admin">{renderProductNames(prodList)}</div>
+            <table className="prod-table-admin">{renderProductNames(prodList)}</table>
         </div>
     )
 }

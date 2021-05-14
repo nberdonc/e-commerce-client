@@ -1,11 +1,20 @@
 * {
-  margin: 0;
-  padding: 0; 
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   letter-spacing: 0.2px;
 }
+html{
+  min-width: 335px;
+  margin: 0;
+  padding: 0; 
+  width: 100%;
+  overflow-x: hidden;
+}
 body{
   min-width: 335px;
+  margin: 0;
+  padding: 0; 
+  width: 100%;
+  overflow-x: hidden
 }
 header{
   min-width: 335px;
@@ -16,6 +25,14 @@ header{
   min-height: 100%;
   height: 100%;
   padding-top: 8em;
+}
+@media(max-width: 1000px){
+.App {
+  background-color: #95cfc6;
+  min-height: 100%;
+  height: 100%;
+  padding-top: 4em;
+}
 }
 
 /*//// NAV PAGE /////*/
@@ -102,7 +119,20 @@ header{
 .products h1 {
   margin-left: 1em;
 }
-
+@media(max-width: 1000px){
+.navbar {
+  position:fixed;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-top: 0.1em;
+  height: 4em;
+  list-style: none;
+  z-index: 70;
+  background-color: #95cfc6;
+}
+}
 /*//// ADMIN PAGE /////*/
 .admin-page {
   height: 100%;
@@ -120,6 +150,7 @@ header{
   justify-content: space-evenly;
   column-gap: 1em;
   row-gap: 1em;
+  align-items: center;
 }
 .admin-uses {
   margin: 2em 0em 2em 0em;
@@ -165,6 +196,8 @@ header{
   background-color: #f7f9fa;
   border: 1px solid grey;
   margin-right: 0.3em;
+  width: 60px;
+  height: 60px;
 }
 .add-del-upd-btns button:hover {
   background-color: #8ea0a3
@@ -185,36 +218,41 @@ header{
   margin: 1em auto;
   padding-left: 0.5em;
 }
-.prod-img-background {
-  position: relative;
-  height: 60px;
-  width: 60px;
-  background-color: rgb(77, 74, 74);;
-  background-size: inherit;
-  margin-left: 0.3em;
+.prod-table-admin{
+  margin: auto;
+  border: 1px solid  rgb(77, 74, 74);
+  margin-bottom: 2em;
+  table-layout:fixed
+}
+.prod-admin-line{
+  background-color: rgb(182, 192, 190); 
 }
 .prod-img-admin  {
   width: 60px;
   height: 60px;
   object-fit: cover;
-}
-.prod-box-admin{
-  max-width: 500px;
-} 
-.prod-admin-line{
-  display: flex;
-  justify-content: space-around;
   padding: 1em;
-  background-color: rgb(182, 192, 190);
-  margin: auto;
-  border: 0.5px solid rgb(77, 74, 74);
+}
+.uses-img-admin  {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+.del-btn button {
+  color:  rgb(77, 74, 74);
+  border-radius: 2px;
+  background-color: #f7f9fa;
+  border: 1px solid grey;
+  width: 60px;
+  height: 60px;
+  margin: 1em
 }
 .prod-bottom-admin {
-  margin-left: 1em;   
+  padding: 1em;  
 }
 .prod-bottom-admin p{
   margin: 0;  
-  font-family:'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;
+  font-family:'Franklin Gothic', 'Arial Narrow', Arial, sans-serif;word-wrap:break-word
 }
 .hide{
   display: none
@@ -222,10 +260,31 @@ header{
 .hr-admin {
   width:100%; 
   height:5px; 
-  margin-top: 1em;
+  margin: 2em 0em;
   background: rgb(117, 114, 114);
+} 
+@media(max-width: 1000px){
+  .admin-page {
+    height: 100%;
+    width: inherit;
+    background-color: #cedddb;
+    padding: 1em 0.1em 1em 0.1em;
+    color: rgb(77, 74, 74);
+  }
+  .uses-columns{
+    flex-direction: column;
+  }
+  .admin-uses {
+    margin: 2em 0em 2em 0em;
+    max-width: 350px;
+    min-width: 290px;
+    padding: 1em 5%;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color:  rgb(77, 74, 74);
+    background-color: rgb(182, 192, 190);
+  }
 }
- 
 
 /*//// SIGN IN/REGISTER PAGE /////*/
 .sign-form{
@@ -404,12 +463,6 @@ header{
 
 /*//// RESPONSIVE PAGES /////*/
 @media(max-width: 1100px){
-  .uses-columns{
-    display: flex;
-    flex-direction: column;
-    column-gap: 1em;
-    row-gap: 1em;
-  }
   .prod-box{
     grid-template:  "1fr 1fr 1fr" 250px;
     grid-template-rows: auto auto auto; 
@@ -448,7 +501,7 @@ header{
   }
   .side-drawer-items{
     list-style: none;
-    margin-top: 15em;
+    margin-top: 6em;
   }
   .navlink-side{
     margin-bottom: 2em;
@@ -499,14 +552,6 @@ header{
 
 @media(max-width: 650px){
   .products {
-    height: 100%;
-    display: grid;
-    justify-content: center;
-    background-color:rgb(238, 236, 236);
-    padding: 1em 0em 1em 0em;
-    color:  rgb(77, 74, 74);
-  }
-  .products-admin {
     height: 100%;
     display: grid;
     justify-content: center;

@@ -33,17 +33,17 @@ export let findOneProduct = async (input, token) => {
 }
 
 /////////////////// TO ADD ONE PRODUCT /////////////////////
-export let addProduct = async (name, price, category, onSale, quantity, image, stock, token) => {
+export let addProduct = async (name, price, category, inputOnSale, quantity, inputAddImage, inputStock, token) => {
   try {
     let url = `http://localhost:3000/products/add/` //"https://sleepy-hamlet-65384.herokuapp.com/checkout"
     let promise = axios.post(url, {
       name: name,
       price: price,
       category: category,
-      onSale: onSale,
+      onSale: inputOnSale,
       quantity: quantity,
-      image: image,
-      stock: stock
+      image: inputAddImage,
+      stock: inputStock
     }, {
       headers: {
         authorization: token

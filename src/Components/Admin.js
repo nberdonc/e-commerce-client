@@ -4,7 +4,6 @@ import { displayProducts, findOneProduct, addProduct, deleteProduct, updateProdu
     from '../AxiosLink'
 
 const Admin = ({ prodList, setProdList, user }) => {
-
     let token = 0
     if (user) {
         token = user.token
@@ -19,6 +18,7 @@ const Admin = ({ prodList, setProdList, user }) => {
 
     let renderProductNames = (arr) => (
         arr.map((ele, idx) => {
+            console.log(ele)
             return (
                 <tr className='prod-admin-line' key={idx}>
                     <td className="prod-img-background">
@@ -30,7 +30,7 @@ const Admin = ({ prodList, setProdList, user }) => {
                     <td className='prod-bottom-admin'>
                         <p><b>Name:</b>{ele.name}</p>
                         <p><b>Price:</b>{ele.price}€</p>
-                        <p><b>OnSale:</b>{ele.onSale}</p>
+                        <p><b>Stock:</b>{ele.stock}</p>
                     </td>
                 </tr>
             )
@@ -40,11 +40,18 @@ const Admin = ({ prodList, setProdList, user }) => {
     ////////////////////////////// TO FIND ONE PRODUCT //////////////////////////////
 
     let defaultPic = "https://cdn.pixabay.com/photo/2018/12/06/16/12/bird-3860034__340.jpg"
+
     const [inputProduct, setInputProduct] = useState("")
     const [foundProd, setFoundProd] = useState([]);
     const [oldId, setOldId] = useState();
-    const [hiddenInfo, setHiddenInfo] = useState("hide")
     const [findImage, setFindImage] = useState(defaultPic)
+
+    const [name, setName] = useState()
+    const [price, setPrice] = useState()
+    const [category, setCategory] = useState()
+    const [inputOnSale, setInputOnSale] = useState()
+    const [inputStock, setInputStock] = useState()
+    const [inputAddImage, setInputAddImage] = useState("")
 
     let handleFindChange = (e) => {
         setInputProduct(e.target.value)
@@ -66,7 +73,6 @@ const Admin = ({ prodList, setProdList, user }) => {
             let oldId = found._id
 
             setFoundProd(found);
-            setHiddenInfo("")
             //to clear input
             setInputProduct("");
             //to show old data in input
@@ -97,19 +103,7 @@ const Admin = ({ prodList, setProdList, user }) => {
     }
 
     ////////////////////////////// TO ADD ONE PRODUCT //////////////////////////////
-
     const quantity = 1
-    const [name, setName] = useState()
-    const [price, setPrice] = useState()
-    const [category, setCategory] = useState()
-    const [defaultOnSale, setDefaultOnSale] = useState(false)
-    const [inputOnSale, setInputOnSale] = useState()
-    const [defaultStock, setDefaultStock] = useState(0)
-    const [inputStock, setInputStock] = useState()
-    const [defauItImage, setDefauItImage] = useState(defaultPic)
-    const [inputAddImage, setInputAddImage] = useState("")
-
-
 
     let handleNameChange = (e) => {
         setName(e.target.value)
@@ -122,14 +116,11 @@ const Admin = ({ prodList, setProdList, user }) => {
     }
     let handleOnSaleChange = (e) => {
         setInputOnSale(e.target.value)
-        setDefaultOnSale(e.target.value)
     }
     let handleStockChange = (e) => {
         setInputStock(e.target.value)
-        setDefaultStock(e.target.value)
     }
     let handleImageChange = (e) => {
-        setDefauItImage(e.target.value)
         setInputAddImage(e.target.value)
     }
 
@@ -148,9 +139,7 @@ const Admin = ({ prodList, setProdList, user }) => {
         setName("")
         setPrice("")
         setCategory("")
-        setDefaultOnSale(false)
         setInputStock("")
-        setDefaultStock(0)
         setFindImage(defaultPic)
         setInputAddImage("")
         setInputOnSale("")
@@ -170,14 +159,13 @@ const Admin = ({ prodList, setProdList, user }) => {
         setProdList(copyProdList)
         //to clear input
         setFoundProd([])
-        setHiddenInfo("hide")
         setName("")
         setPrice("")
         setCategory("")
         setInputOnSale("")
         setInputStock("")
-        setDefauItImage("")
         setFindImage(defaultPic)
+        setInputAddImage("")
     }
 
     ////////////////////////////// TO DELETE ONE PRODUCT //////////////////////////////
@@ -189,16 +177,15 @@ const Admin = ({ prodList, setProdList, user }) => {
         await deleteProduct(delID, token)
         //to make Prod disappear from screen
         setProdList(prodList.filter(deletedProd => deletedProd._id !== delID))
-        //to make foundProd disappear from screen
+        //to make foundProd disappear from input
         setFoundProd([])
-        setHiddenInfo("hide")
         setName("")
         setPrice("")
         setCategory("")
-        setDefaultOnSale("")
-        setDefaultStock("")
-        setDefauItImage("")
+        setInputOnSale("")
+        setInputStock("")
         setFindImage(defaultPic)
+        setInputAddImage("")
     }
 
     ////////////////////////////// TO FIND ONE USER //////////////////////////////

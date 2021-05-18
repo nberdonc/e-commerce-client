@@ -117,7 +117,6 @@ const Cart = ({ cart, setCart, cartTotal, setCartTotal }) => {
                             <p>{item.price}€</p>
                             <div className="cart-box">
                                 <div className="cart-box">
-                                    <p>Quantity</p>
                                     <p name="-" onClick={() => reduceCounter(item._id)}>-</p>
                                     <p>{item.quantity}</p>
                                     <p name="+" onClick={() => increaseCounter(item._id)}>+</p>

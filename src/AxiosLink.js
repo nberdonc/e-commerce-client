@@ -1,11 +1,14 @@
 import axios from 'axios';
+const port = process.env.REACT_APP_PORT
 
 /////////////////// TO DISPLAY ALL PRODUCTS /////////////////
 export let displayProducts = async () => {
   try {
-    let url = `http://localhost:3000/products/` //"https://sleepy-hamlet-65384.herokuapp.com/checkout"
+    let url = `http://localhost:${port}/products/`
+    console.log(url)
     let promise = axios.get(url);
     let response = await promise;
+    console.log(response.data)
     return response.data;
   }
   catch (error) {
@@ -17,7 +20,7 @@ export let displayProducts = async () => {
 export let findOneProduct = async (input, token) => {
   try {
     console.log("find products")
-    let url = `http://localhost:3000/products/find/${input}`  //"https://sleepy-hamlet-65384.herokuapp.com/checkout"
+    let url = `http://localhost:${port}/products/find/${input}`
     let promise = axios.get(url, {
       headers: {
         authorization: token
@@ -35,7 +38,7 @@ export let findOneProduct = async (input, token) => {
 /////////////////// TO ADD ONE PRODUCT /////////////////////
 export let addProduct = async (name, price, category, inputOnSale, quantity, inputAddImage, inputStock, token) => {
   try {
-    let url = `http://localhost:3000/products/add/` //"https://sleepy-hamlet-65384.herokuapp.com/checkout"
+    let url = `http://localhost:${port}/products/add/`
     let promise = axios.post(url, {
       name: name,
       price: price,
@@ -61,7 +64,7 @@ export let addProduct = async (name, price, category, inputOnSale, quantity, inp
 /////////////////////// TO DELETE ONE PRODUCT //////////////////////
 export let deleteProduct = async (id, token) => {
   try {
-    let url = `http://localhost:3000/products/delete` //"https://sleepy-hamlet-65384.herokuapp.com/checkout"
+    let url = `http://localhost:${port}/products/delete`
     let promise = axios.post(url, {
       id: id,
     }, {
@@ -82,7 +85,7 @@ export let deleteProduct = async (id, token) => {
 export let updateProduct = async (id, newName, newPrice, newCategory, newOnSale, newStock, newImage, token) => {
   try {
     console.log("update products")
-    let url = `http://localhost:3000/products/update` //"https://sleepy-hamlet-65384.herokuapp.com/checkout"
+    let url = `http://localhost:${port}/products/update`
     let promise = axios.post(url, {
       id: id,
       name: newName,
@@ -109,7 +112,7 @@ export let updateProduct = async (id, newName, newPrice, newCategory, newOnSale,
 /////////////////// SHOW ALL USERS /////////////////////
 export let displayUsers = async () => {
   try {
-    let url = `http://localhost:3000/user/` //"https://sleepy-hamlet-65384.herokuapp.com/checkout"
+    let url = `http://localhost:${port}/user/`
     let promise = axios.get(url);
     let response = await promise;
     return response.data;
@@ -122,7 +125,7 @@ export let displayUsers = async () => {
 /////////////////// TO REGISTER ONE USER /////////////////////
 export let addUser = async (name, lastName, email, password, isAdmin) => {
   try {
-    let url = `http://localhost:3000/user/register` //"https://sleepy-hamlet-65384.herokuapp.com/checkout"
+    let url = `http://localhost:${port}/user/register`
     let promise = axios.post(url, {
       name: name,
       lastName: lastName,
@@ -143,7 +146,7 @@ export let addUser = async (name, lastName, email, password, isAdmin) => {
 
 export let signinUser = async (email, password) => {
   try {
-    let url = `http://localhost:3000/user/signin` //"https://sleepy-hamlet-65384.herokuapp.com/checkout"
+    let url = `http://localhost:${port}/user/signin`
     let promise = axios.post(url,
       {
         email: email,
@@ -162,7 +165,7 @@ export let signinUser = async (email, password) => {
 export let findUser = async (email, token) => {
   console.log("from axios before try", email)
   try {
-    let url = `http://localhost:3000/user/find` //"https://sleepy-hamlet-65384.herokuapp.com/checkout"
+    let url = `http://localhost:${port}/user/find`
     let promise = axios.post(url,
       {
         email: email
@@ -186,7 +189,7 @@ export let findUser = async (email, token) => {
 export let deleteUser = async (id, token) => {
   try {
     console.log("from axios id:", id)
-    let url = `http://localhost:3000/user/delete` //"https://sleepy-hamlet-65384.herokuapp.com/checkout"
+    let url = `http://localhost:${port}/user/delete`
     let promise = axios.post(url, {
       id: id,
     }, {
@@ -207,7 +210,7 @@ export let deleteUser = async (id, token) => {
 export let updateUser = async (id, userisAdmin, token) => {
   console.log("from axios update products", id, userisAdmin)
   try {
-    let url = `http://localhost:3000/user/update` //"https://sleepy-hamlet-65384.herokuapp.com/checkout"
+    let url = `http://localhost:${port}/user/update`
     let promise = axios.post(url, {
       id: id,
       isAdmin: userisAdmin,
@@ -229,7 +232,7 @@ export let updateUser = async (id, userisAdmin, token) => {
 export let updateStockProduct = async (cartListBeforePay) => {
   console.log("update products", cartListBeforePay)
   try {
-    let url = `http://localhost:3000/products/update/stock` //"https://sleepy-hamlet-65384.herokuapp.com/checkout"
+    let url = `http://localhost:${port}/products/update/stock`
     let promise = axios.post(url, cartListBeforePay);
     let response = await promise;
     console.log(response)
@@ -244,7 +247,7 @@ export let updateStockProduct = async (cartListBeforePay) => {
 export let resetStockProductdueCardFailure = async (cartListBeforePay) => {
   console.log("to reset products", cartListBeforePay)
   try {
-    let url = `http://localhost:3000/products/reset/stock` //"https://sleepy-hamlet-65384.herokuapp.com/checkout"
+    let url = `http://localhost:${port}/products/reset/stock`
     let promise = axios.post(url, cartListBeforePay);
     let response = await promise;
     console.log(response)
@@ -257,7 +260,7 @@ export let resetStockProductdueCardFailure = async (cartListBeforePay) => {
 /////////////////// TO ADD ONE ORDER /////////////////////
 export let addOrder = async (email, name, lastName, address, postCode, city, country, OrderProdQuantity) => {
   try {
-    let url = `http://localhost:3000/orders/add` //"https://sleepy-hamlet-65384.herokuapp.com/checkout"
+    let url = `http://localhost:${port}/orders/add`
     let promise = axios.post(url, {
       email: email,
       name: name,
@@ -281,7 +284,7 @@ export let addOrder = async (email, name, lastName, address, postCode, city, cou
 /////////////////// SHOW ALL ORDERS /////////////////////
 export let displayOrders = async () => {
   try {
-    let url = `http://localhost:3000/orders/` //"https://sleepy-hamlet-65384.herokuapp.com/checkout"
+    let url = `http://localhost:${port}/orders/`
     let promise = axios.get(url);
     let response = await promise;
     return response.data;

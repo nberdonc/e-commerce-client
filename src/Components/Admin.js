@@ -12,8 +12,8 @@ const Admin = ({ prodList, setProdList, user }) => {
     ////////////////////////////// TO DISPLAY ALL PRODUCTS //////////////////////////////
 
     useEffect(async () => {
-        let prodList = await displayProducts()
-        setProdList(prodList)
+        let prodListDB = await displayProducts()
+        setProdList(prodListDB)
     }, [])
 
     let renderProductNames = (arr) => (
@@ -270,7 +270,7 @@ const Admin = ({ prodList, setProdList, user }) => {
                     </form>
                     <div className='img-btn-row'>
                         <div className="prod-img-background">
-                            <img className='uses-img-admin' src={findImage} alt="user" />
+                            <img className='uses-img-admin' src={defaultPic} alt="user" />
                         </div>
                         <div className='add-del-upd-btns'>
                             <button id={userID} onClick={updateOneUser}>UPD</button>

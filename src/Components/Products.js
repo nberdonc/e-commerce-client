@@ -3,10 +3,17 @@ import { displayProducts } from '../AxiosLink'
 
 const Products = ({ prodList, setProdList, cart, setCart, localCart }) => {
 
+    ////////////////////////////// DISPLAY PRODUCTS  //////////////////////////////
     useEffect(async () => {
-        let prodList = await displayProducts()
-        setProdList(prodList)
+        let prodListDB = await displayProducts()
+        console.log(prodListDB)
+        setProdList(prodListDB)
+
     }, [])
+
+    useEffect(async () => {
+        console.log("AASDASD", prodList)
+    }, prodList)
 
     ////////////////////////////// ADD TO CART  //////////////////////////////
 
@@ -40,11 +47,15 @@ const Products = ({ prodList, setProdList, cart, setCart, localCart }) => {
 
     }, []) //the empty array ensures useEffect only runs once
 
+
+    ////////////////////////////// DISPLAY PRODUCTS  //////////////////////////////
+
     let renderProducts = (arr) => (
         arr.map((ele, idx) => {
+            console.log(arr)
             return ele.stock > 0 ?
                 <div key={idx}>
-                    <div className="box">
+                    <div class="box">
                         <img className='prod-img' src={ele.image} alt={ele.name} />
                         <button onClick={() => addToCart(ele)} className='btn'>+</button>
                     </div>
@@ -60,7 +71,7 @@ const Products = ({ prodList, setProdList, cart, setCart, localCart }) => {
         arr.map((ele, idx) => {
             return ele.onSale === true && ele.stock > 0 ?
                 <div key={idx}>
-                    <div className="box">
+                    <div class="box">
                         <img className='prod-img' src={ele.image} alt={ele.name} />
                         <button onClick={() => addToCart(ele)} className='btn'>+</button>
                     </div>

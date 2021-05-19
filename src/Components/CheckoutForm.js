@@ -95,7 +95,7 @@ const CheckoutForm = ({ cart, cartTotal, setCartTotal, setCart, localCart, order
             const { id } = paymentMethod;
 
             try {
-                let url = "http://localhost:3000/checkout" //"https://sleepy-hamlet-65384.herokuapp.com/checkout"
+                let url = "http://localhost:3010/checkout"
                 let promise = axios.post(url, {
                     id,
                     amount: cartTotal,
@@ -204,9 +204,4 @@ const CheckoutForm = ({ cart, cartTotal, setCartTotal, setCart, localCart, order
 
 export default CheckoutForm
 
-/* maybe to place in cart on top of <hr>
-    <div>
-        {cartTotal > 49 ? <p>FREE SHIPPING</p> : null}
-    </div>
-    */
 

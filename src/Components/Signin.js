@@ -51,10 +51,9 @@ const Signin = ({ setToHome, toHome, setUser, user }) => {
                 </div>
                 <button type="submit" className='sign-input'>Sign in</button>
                 <div className='form-text'>
-                    <p><a href='#'>Forgot your password? </a></p>
                     <p>Not a registered user?
                         <Link exact to="/register">
-                             . Sign up here
+                            . Sign up here
                         </Link></p>
                     <p>{message}</p>
                 </div>
@@ -65,5 +64,4 @@ const Signin = ({ setToHome, toHome, setUser, user }) => {
 
 export default Signin
 
-//Forgot your password link to be completed
 

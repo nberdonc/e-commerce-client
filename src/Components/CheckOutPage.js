@@ -4,7 +4,7 @@ import { Elements } from "@stripe/react-stripe-js"
 import CheckoutForm from './CheckoutForm'
 import ShippingInfo from './ShippingInfo'
 
-const stripePromise = loadStripe("pk_test_51IQE7fI4yOlGRIVQCWTcskXhffrsy4PXN2ZcfpdV7oAnAg1JNhaUUthNEDdGFaTTqJlkJglVl52m6zZgoYz0WAgF00CVwIKEMv")
+const stripePromise = loadStripe(process.env.REACT_APP_PUBLISHABLE_KEY)
 
 const CheckOutPage = ({ cart, cartTotal, setCartTotal, localCart, setCart, orderName, setOrderName, orderLastName, setOrderLastName, address, setAddress, postalcode, setPostalcode, city, setCity, country, setCountry, orderList, setOrderList }) => {
 

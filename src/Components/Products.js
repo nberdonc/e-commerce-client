@@ -40,11 +40,13 @@ const Products = ({ prodList, setProdList, cart, setCart, localCart }) => {
     };
     // to prevent local state to be lost if user refreshes the page
     useEffect(() => {
-        //turn it into js
-        localCart = JSON.parse(localCart);
-        //load persisted cart into state if it exists
-        if (localCart) setCart(localCart)
 
+        //load persisted cart into state if it exists
+        if (localCart) {
+            //turn it into js
+            localCart = JSON.parse(localCart);
+            setCart(localCart)
+        }
     }, []) //the empty array ensures useEffect only runs once
 
 

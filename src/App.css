@@ -97,11 +97,12 @@ header{
   .cart-icon{
     position: fixed;
     display:flex;
-    right: 25px;
+    right: 23px;
     padding-top: 18px;
-    font-size: 30px;
+    font-size: 25px;
     color: rgb(77, 74, 74);
     z-index: 100;
+    text-decoration: none;
   }
   .side-drawer{
     display:flex;

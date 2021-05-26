@@ -63,6 +63,15 @@ const Nav = ({ cart, clearStorage, user, click, setClick }) => {
             <div className='menu-icon' onClick={handleClick}>
                 <i className={click ? 'fas fa-times' : 'fas fa-bars'}></i>
             </div>
+            <NavLink
+                className='cart-icon'
+                exact to={"/cart"}
+                activeStyle={{
+                    fontWeight: "bold",
+                    color: "rgb(77, 74, 74)"
+                }}>
+                <i class="fas fa-shopping-cart"></i>({cartTotal})
+            </NavLink>
         </nav>
     );
 };

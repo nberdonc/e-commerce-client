@@ -56,6 +56,9 @@ header{
 .menu-icon{
   display: none;
 }
+.cart-icon{
+  display: none;
+}
 .side-drawer{
   display: none;
 }
@@ -83,6 +86,15 @@ header{
     display: none;
   }
   .menu-icon{
+    position: fixed;
+    display:flex;
+    left: 25px;
+    padding-top: 18px;
+    font-size: 30px;
+    color: rgb(77, 74, 74);
+    z-index: 100;
+  }
+  .cart-icon{
     position: fixed;
     display:flex;
     right: 25px;

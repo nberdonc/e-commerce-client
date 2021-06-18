@@ -1,7 +1,6 @@
 -E-COMMERCE PAGE: Created with REACT.JS for the UI apliying FLEX BOX and GRID.
 Using react-router-dom for the navigation bar, react-stripe-js as the secured payment platform and Axios to make asynchronous HTTP requests to REST endpoints and perform CRUD operations.
 Deployed in Heroku.
-Check out the admin page! User email: admin@admin.com  Password: 123456789
 
 The back-end has been created with NODE.JS platform and EXPRESS as it's framework.
 Using JWT for the users authentification.

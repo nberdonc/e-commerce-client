@@ -1,4 +1,6 @@
-### -E-COMMERCE PAGE: Created with REACT.JS for the UI apliying FLEX BOX and GRID.
+### -E-COMMERCE PAGE: 
+
+Bootstrapped with REACT.JS for the UI apliying FLEX BOX and GRID.
 Using react-router-dom for the navigation bar, react-stripe-js as the secured payment platform and Axios to make asynchronous HTTP requests to REST endpoints and perform CRUD operations.
 
 **Deployed in Heroku:** https://nb-ecommerce-web-client.herokuapp.com/
